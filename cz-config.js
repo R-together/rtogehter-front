@@ -28,8 +28,4 @@ module.exports = {
   },
   allowCustomScopes: false,
   skipQuestions: ["scope", "breaking", "footer"],
-  allowTicketNumber: true,
-  isTicketNumberRequired: false,
-  ticketNumberPrefix: "ECBS-",
-  subjectLimit: 100,
 };
