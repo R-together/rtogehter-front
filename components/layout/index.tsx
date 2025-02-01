@@ -11,6 +11,7 @@ import { pcViewMinimumWidth } from "@/constants/layout";
 function Layout({ children }: { children: React.ReactNode }) {
   const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
   const setIsMobile = useLayoutStore((state) => state.setIsMobile);
+  const isMobile = useLayoutStore((state) => state.isMobile);
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -44,11 +45,13 @@ function Layout({ children }: { children: React.ReactNode }) {
         logOutHandler={logOutHandler}
       />
 
-      <LeftNavigationBar
-        isOpen={isOpen}
-        sideMenuToggleHandler={sideMenuToggleHandler}
-        logOutHandler={logOutHandler}
-      />
+      {isMobile && (
+        <LeftNavigationBar
+          isOpen={isOpen}
+          sideMenuToggleHandler={sideMenuToggleHandler}
+          logOutHandler={logOutHandler}
+        />
+      )}
 
       <div className="mx-5">{children}</div>
     </div>
