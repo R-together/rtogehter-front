@@ -6,6 +6,7 @@ import { useLayoutStore } from "@/store/layoutStore";
 import HamburgerMenu from "/public/assets/hamburgerMenu.svg";
 import SignOut from "/public/assets/sign_out.svg";
 import Profile from "/public/assets/profile.svg";
+import { useAuthStore } from "@/store/authStore";
 
 interface ITopNavigationBar {
   sideMenuToggleHandler: () => void;
@@ -17,6 +18,7 @@ function TopNavigationBar({
   logOutHandler,
 }: ITopNavigationBar) {
   const isMobile = useLayoutStore((state) => state.isMobile);
+  const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
 
   return (
     <header className="px-5 py-3 flex justify-between items-center shadow-md">
@@ -46,17 +48,21 @@ function TopNavigationBar({
             />
           </div>
 
-          <div className="flex justify-around items-center gap-8">
-            <div>
-              <Link href="/my-page">
-                <Profile />
-              </Link>
-            </div>
+          {isLoggedIn && (
+            <>
+              <div className="flex justify-around items-center gap-8">
+                <div>
+                  <Link href="/my-page">
+                    <Profile />
+                  </Link>
+                </div>
 
-            <div onClick={logOutHandler}>
-              <SignOut />
-            </div>
-          </div>
+                <div onClick={logOutHandler}>
+                  <SignOut />
+                </div>
+              </div>
+            </>
+          )}
         </>
       )}
     </header>
