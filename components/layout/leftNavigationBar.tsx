@@ -1,7 +1,9 @@
-import Image from "next/image";
+import Link from "next/link";
 
 import CloseBackground from "./closeBackground";
-import Link from "next/link";
+
+import Close from "/public/assets/close.svg";
+import SignOut from "/public/assets/sign_out.svg";
 
 interface ILeftNavigationBar {
   isOpen: boolean;
@@ -27,12 +29,7 @@ function LeftNavigationBar({
           onClick={sideMenuToggleHandler}
           className="p-4 flex justify-end"
         >
-          <Image
-            src="/close.svg"
-            alt="r together logo"
-            width={30}
-            height={30}
-          />
+          <Close />
         </header>
 
         <div className="p-4 text-center">
@@ -41,13 +38,7 @@ function LeftNavigationBar({
         </div>
 
         <footer className="p-4">
-          <Image
-            src="/sign_out.svg"
-            alt="sign out icon"
-            width={30}
-            height={30}
-            onClick={logOutHandler}
-          />
+          <SignOut onClick={logOutHandler} />
         </footer>
       </nav>
     </div>
