@@ -4,6 +4,7 @@ import CloseBackground from "./closeBackground";
 
 import Close from "/public/assets/close.svg";
 import SignOut from "/public/assets/sign_out.svg";
+import { useAuthStore } from "@/store/authStore";
 
 interface ILeftNavigationBar {
   isOpen: boolean;
@@ -16,6 +17,8 @@ function LeftNavigationBar({
   sideMenuToggleHandler,
   logOutHandler,
 }: ILeftNavigationBar) {
+  const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
+
   return (
     <div
       className={`transition ease-in-out duration-100 ${
@@ -33,12 +36,13 @@ function LeftNavigationBar({
         </header>
 
         <div className="p-4 text-center">
-          Oh, you are not a member. <br />
+          Oh, you are not a member.
+          <br />
           For more feature, please <Link href="/login">login!</Link>
         </div>
 
         <footer className="p-4">
-          <SignOut onClick={logOutHandler} />
+          {isLoggedIn && <SignOut onClick={logOutHandler} />}
         </footer>
       </nav>
     </div>
