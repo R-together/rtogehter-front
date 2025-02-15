@@ -5,6 +5,7 @@
 
 import { BasicForm } from "@/app/__components/BasicForm";
 import { BasicButton } from "../__components/BasicButton";
+import { ToggleButton } from "../__components/ToggleButton";
 
 export default function ComponentsCheckPage() {
   return (
@@ -29,6 +30,10 @@ export default function ComponentsCheckPage() {
         <BasicButton theme="light" buttonLabel="Basic Button" />
         <h3>Dark theme</h3>
         <BasicButton theme="dark" buttonLabel="Basic Button" />
+      </div>
+      <div>
+        <h2 className="font-bold">Toggle Button</h2>
+        <ToggleButton />
       </div>
     </div>
   );
