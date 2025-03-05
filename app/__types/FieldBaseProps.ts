@@ -1,4 +1,5 @@
 interface BaseProps {
+  // id props is used to connect to label and labeled componenent
   id: string;
   required?: boolean;
 }
